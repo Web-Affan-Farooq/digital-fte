@@ -1,0 +1,174 @@
+# Digital FTE - Git Ignore Rules
+# Security: Secrets and sensitive data never committed
+
+# ===========================================
+# SECRETS & CREDENTIALS (NEVER COMMIT)
+# ===========================================
+
+# Environment files with secrets
+.env
+.env.local
+.env.production
+.env.*.local
+
+# OAuth tokens and credentials
+**/credentials.json
+**/token.json
+**/service_account.json
+**/*.pem
+**/*.key
+
+# Session files
+**/.sessions/
+**/session_*.json
+**/whatsapp_session/
+
+# API keys
+**/api_keys.txt
+**/secrets/
+
+# ===========================================
+# PYTHON
+# ===========================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===========================================
+# OBSIDIAN VAULT - EXCLUDE SENSITIVE
+# ===========================================
+
+# Logs (can grow large, contain runtime data)
+vault/Logs/*.log
+vault/Logs/*_processed_*.txt
+
+# Temporary files
+vault/.trash/
+vault/.obsidian/plugins/obsidian-git/
+
+# Personal data (uncomment if vault is shared)
+# vault/Accounting/*.md
+# vault/Briefings/*.md
+
+# ===========================================
+# NODE.JS (Future MCP Servers)
+# ===========================================
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ===========================================
+# SYSTEM FILES
+# ===========================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.Trash-*
+.nfs*
+
+# ===========================================
+# TEMPORARY FILES
+# ===========================================
+
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+
+# ===========================================
+# DOCUMENTATION - OPTIONAL
+# ===========================================
+
+# Large demo files
+# demo/
+# samples/
+
+# ===========================================
+# ALLOW THESE IN VAULT
+# ===========================================
+
+# Keep these tracked:
+# vault/Dashboard.md
+# vault/Company_Handbook.md
+# vault/Business_Goals.md
+# vault/Inbox/
+# vault/Needs_Action/
+# vault/Done/
+# vault/Plans/
+# vault/Pending_Approval/
+# vault/Approved/

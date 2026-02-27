@@ -1,0 +1,21 @@
+# Digital FTE - Python Dependencies
+# Bronze Tier Requirements
+# Install with: pip install -r requirements.txt
+
+# Core dependencies (required for Bronze tier)
+watchdog>=3.0.0          # File system monitoring for filesystem_watcher.py
+
+# Gmail integration (optional, for Gmail watcher)
+# Uncomment to enable Gmail support:
+# google-api-python-client>=2.100.0
+# google-auth-httplib2>=0.1.0
+# google-auth-oauthlib>=1.0.0
+
+# Development dependencies (optional)
+# python-dotenv>=1.0.0   # Environment variable management
+
+# Notes:
+# - Python 3.13+ is required
+# - For Gmail watcher: pip install google-api-python-client google-auth-httplib2 google-auth-oauthlib
+# - For WhatsApp watcher (future): pip install playwright
+# - Run: python -m playwright install (after installing playwright)

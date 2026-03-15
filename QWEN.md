@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-**Digital FTE** (Full-Time Equivalent) is a personal AI employee system that autonomously manages personal and business affairs 24/7. It uses **Claude Code** as the reasoning engine and **Obsidian** as the knowledge dashboard, with lightweight Python "Watcher" scripts monitoring inputs (Gmail, WhatsApp, filesystems) and **MCP (Model Context Protocol)** servers handling external actions.
+**Digital FTE** (Full-Time Equivalent) is a personal AI employee system that autonomously manages personal and business affairs 24/7. It uses **qwen code Code** as the reasoning engine and **Obsidian** as the knowledge dashboard, with lightweight Python "Watcher" scripts monitoring inputs (Gmail, WhatsApp, filesystems) and **MCP (Model Context Protocol)** servers handling external actions.
 
 **Tagline:** *Your life and business on autopilot. Local-first, agent-driven, human-in-the-loop.*
 
@@ -13,7 +13,7 @@
 │                    DIGITAL FTE ARCHITECTURE                 │
 ├─────────────────────────────────────────────────────────────┤
 │                                                             │
-│  PERCEPTION (Watchers) → REASONING (Claude) → ACTION (MCP) │
+│  PERCEPTION (Watchers) → REASONING (qwen code) → ACTION (MCP) │
 │                                                             │
 │  ┌──────────────┐    ┌─────────────┐    ┌──────────────┐   │
 │  │ Gmail Watcher│    │             │    │ Email MCP    │   │
@@ -36,10 +36,10 @@
 | Component | Purpose | Location |
 |-----------|---------|----------|
 | **Watchers** | Python scripts monitoring Gmail, WhatsApp, filesystems | Planned: `/watchers/` |
-| **Claude Code** | Reasoning engine with Ralph Wiggum persistence loop | External tool |
+| **qwen code Code** | Reasoning engine with Ralph Wiggum persistence loop | External tool |
 | **Obsidian Vault** | Dashboard.md, Company_Handbook.md, task folders | Local Markdown |
 | **MCP Servers** | External action handlers (email, browser, payments) | Configured via `mcp.json` |
-| **Skills** | Agent skills for Claude Code | `.agents/skills/` |
+| **Skills** | Agent skills for qwen code Code | `.agents/skills/` |
 
 ## Repository Structure
 
@@ -68,7 +68,7 @@ G:\digital-fte\
 
 | Software | Version | Purpose |
 |----------|---------|---------|
-| [Claude Code](https://claude.com/product/claude-code) | Latest | Reasoning engine |
+| [qwen code Code](https://qwen code.com/product/qwen code-code) | Latest | Reasoning engine |
 | [Obsidian](https://obsidian.md/download) | v1.10.6+ | Knowledge dashboard |
 | [Python](https://www.python.org/downloads/) | 3.13+ | Watcher scripts |
 | [Node.js](https://nodejs.org/) | v24+ LTS | MCP servers |
@@ -103,7 +103,7 @@ python scripts/mcp-client.py emit --url http://localhost:8808
 
 ### Ralph Wiggum Persistence Loop
 
-The "Ralph Wiggum" pattern keeps Claude working until tasks are complete:
+The "Ralph Wiggum" pattern keeps qwen code working until tasks are complete:
 
 ```bash
 # Start a Ralph loop
@@ -132,7 +132,7 @@ Vault/
 
 ### Human-in-the-Loop Pattern
 
-For sensitive actions, Claude writes an approval request file:
+For sensitive actions, qwen code writes an approval request file:
 
 ```markdown
 ---
@@ -160,7 +160,7 @@ Move this file to /Rejected folder.
 
 | Tier | Description | Estimated Time |
 |------|-------------|----------------|
-| **Bronze** | Foundation: Obsidian vault, one watcher, basic Claude integration | 8-12 hours |
+| **Bronze** | Foundation: Obsidian vault, one watcher, basic qwen code integration | 8-12 hours |
 | **Silver** | Functional: Multiple watchers, MCP servers, HITL workflow | 20-30 hours |
 | **Gold** | Autonomous: Full integration, Odoo accounting, Ralph loop | 40+ hours |
 | **Platinum** | Production: Cloud deployment, delegation, 24/7 operation | 60+ hours |

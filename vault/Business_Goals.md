@@ -85,7 +85,7 @@ The AI should flag subscriptions for review based on these criteria:
 - [x] Dashboard.md tracking key metrics
 - [x] Company Handbook defining rules
 - [ ] At least one watcher script operational
-- [ ] Claude Code successfully processing files
+- [ ] qwen Code successfully processing files
 - [ ] Basic approval workflow functional
 
 ### Silver Tier (Next Goal)
@@ -113,7 +113,7 @@ The AI should flag subscriptions for review based on these criteria:
 |-----|-------|-----------|-------|
 | Mon | Setup vault structure | ☐ | - |
 | Tue | Configure watchers | ☐ | - |
-| Wed | Test Claude integration | ☐ | - |
+| Wed | Test qwen integration | ☐ | - |
 | Thu | Process first files | ☐ | - |
 | Fri | Weekly review | ☐ | - |
 

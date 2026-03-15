@@ -2,7 +2,7 @@
 
 > **Your life and business on autopilot. Local-first, agent-driven, human-in-the-loop.**
 
-Digital FTE (Full-Time Equivalent) is a personal AI employee system that autonomously manages personal and business affairs 24/7. It uses **Claude Code** as the reasoning engine and **Obsidian** as the knowledge dashboard, with lightweight Python "Watcher" scripts monitoring inputs (Gmail, WhatsApp, filesystems).
+Digital FTE (Full-Time Equivalent) is a personal AI employee system that autonomously manages personal and business affairs 24/7. It uses **qwen code cli** as the reasoning engine and **Obsidian** as the knowledge dashboard, with lightweight Python "Watcher" scripts monitoring inputs (Gmail, WhatsApp, filesystems).
 
 ## 🏆 Hackathon Status: Bronze Tier
 
@@ -10,7 +10,7 @@ This repository implements the **Bronze Tier** foundation:
 
 - ✅ Obsidian vault with Dashboard.md and Company_Handbook.md
 - ✅ One working Watcher script (filesystem monitoring)
-- ✅ Claude Code integration for reading/writing to vault
+- ✅ qwen code cli integration for reading/writing to vault
 - ✅ Basic folder structure: /Inbox, /Needs_Action, /Done
 - ✅ Gmail watcher (requires API setup)
 - ✅ Orchestrator with Ralph Wiggum loop
@@ -19,7 +19,7 @@ This repository implements the **Bronze Tier** foundation:
 
 | Software | Version | Purpose |
 |----------|---------|---------|
-| [Claude Code](https://claude.com/product/claude-code) | Latest | Reasoning engine |
+| [qwen code cli](https://qwen code.com/product/qwen code-code) | Latest | Reasoning engine |
 | [Obsidian](https://obsidian.md/download) | v1.10.6+ | Knowledge dashboard |
 | [Python](https://www.python.org/downloads/) | 3.13+ | Watcher scripts |
 | [Node.js](https://nodejs.org/) | v24+ LTS | MCP servers (future) |
@@ -58,13 +58,13 @@ File → Open Vault → Select G:\digital-fte\vault
 
 ```bash
 # Check system status
-python scripts/orchestrator.py status
+uv run scripts/orchestrator.py status
 
 # Start filesystem watcher (dry run)
-python scripts/filesystem_watcher.py --vault ./vault
+uv run scripts/filesystem_watcher.py --vault ./vault
 
-# Process with Claude Code
-python scripts/orchestrator.py process
+# Process with qwen code cli
+uv run scripts/orchestrator.py process
 ```
 
 ## 📁 Project Structure
@@ -133,7 +133,7 @@ MAX_ITERATIONS=10
 7. Run authentication:
 
 ```bash
-python scripts/gmail_watcher.py --auth --vault ./vault
+uv run scripts/gmail_watcher.py --auth --vault ./vault
 ```
 
 ## 📖 Usage
@@ -141,33 +141,38 @@ python scripts/gmail_watcher.py --auth --vault ./vault
 ### Start Watchers
 
 ```bash
-# Start all watchers
-python scripts/orchestrator.py start
-
-# Start specific watcher
-python scripts/filesystem_watcher.py --vault ./vault
-
-# Gmail watcher (if configured)
-python scripts/gmail_watcher.py --vault ./vault
+# Activate venv 
+.venv/Scripts/activate
 ```
 
-### Process with Claude Code
+```bash
+# Start all watchers
+uv run scripts/orchestrator.py start
+
+# Start specific watcher
+uv run scripts/filesystem_watcher.py --vault ./vault
+
+# Gmail watcher (if configured)
+uv run scripts/gmail_watcher.py --vault ./vault
+```
+
+### Process with qwen code cli
 
 ```bash
 # Process Needs_Action folder
-python scripts/orchestrator.py process
+uv run scripts/orchestrator.py process
 
 # Custom prompt
-python scripts/orchestrator.py process --prompt "Review all pending approvals"
+uv run scripts/orchestrator.py process --prompt "Review all pending approvals"
 
 # Ralph Wiggum loop (autonomous multi-step)
-python scripts/orchestrator.py ralph-loop "Process all files in /Needs_Action"
+uv run scripts/orchestrator.py ralph-loop "Process all files in /Needs_Action"
 ```
 
 ### Check Status
 
 ```bash
-python scripts/orchestrator.py status
+uv run scripts/orchestrator.py status
 ```
 
 ## 🤖 How It Works
@@ -178,11 +183,11 @@ python scripts/orchestrator.py status
 ┌─────────────────────────────────────────────────────────────┐
 │                    DIGITAL FTE ARCHITECTURE                 │
 ├─────────────────────────────────────────────────────────────┤
-│  PERCEPTION (Watchers) → REASONING (Claude) → ACTION (MCP) │
+│  PERCEPTION (Watchers) → REASONING (qwen code) → ACTION (MCP) │
 │                                                             │
 │  ┌──────────────┐    ┌─────────────┐    ┌──────────────┐   │
 │  │ Gmail Watcher│    │             │    │ (Future:     │   │
-│  │ File Watcher │───▶│ Claude Code │───▶│  Email MCP)  │   │
+│  │ File Watcher │───▶│ qwen code cli │───▶│  Email MCP)  │   │
 │  └──────────────┘    │ (Brain)     │    └──────────────┘   │
 │                      └─────────────┘                       │
 │                            │                                │
@@ -198,17 +203,17 @@ python scripts/orchestrator.py status
 
 1. **Watcher detects input** (new email, file drop, etc.)
 2. **Creates action file** in `/Needs_Action/` folder
-3. **Orchestrator triggers Claude Code** to process
-4. **Claude reads** Company_Handbook.md for rules
-5. **Claude creates plan** in `/Plans/` folder
-6. **Claude requests approval** for sensitive actions
+3. **Orchestrator triggers qwen code cli** to process
+4. **qwen code reads** Company_Handbook.md for rules
+5. **qwen code creates plan** in `/Plans/` folder
+6. **qwen code requests approval** for sensitive actions
 7. **Human reviews** and moves files to `/Approved/`
 8. **Action executed** (future: via MCP servers)
 9. **Files moved to `/Done/`** and Dashboard updated
 
 ### Human-in-the-Loop Pattern
 
-For sensitive actions, Claude creates approval requests:
+For sensitive actions, qwen code creates approval requests:
 
 ```markdown
 ---
@@ -233,9 +238,9 @@ Move this file to /Rejected folder.
 - [x] Company Handbook defining rules
 - [x] At least one watcher script operational (filesystem)
 - [x] Gmail watcher implemented (requires API setup)
-- [x] Claude Code successfully processing files
+- [x] qwen code cli successfully processing files
 - [x] Orchestrator with Ralph Wiggum loop
-- [ ] Test with real files and Claude Code
+- [ ] Test with real files and qwen code cli
 
 ## 📈 Next Steps (Silver Tier)
 
@@ -254,16 +259,16 @@ Move this file to /Rejected folder.
 
 ## 🐛 Troubleshooting
 
-### Claude Code not found
+### qwen code cli not found
 
 ```bash
-npm install -g @anthropic/claude-code
+npm install -g @anthropic/qwen code-code
 ```
 
 ### Gmail API error
 
 - Ensure credentials.json is in correct location
-- Run `python scripts/gmail_watcher.py --auth` to re-authenticate
+- Run `uv run scripts/gmail_watcher.py --auth` to re-authenticate
 
 ### Watcher not detecting files
 
@@ -292,10 +297,10 @@ MIT License - See LICENSE file for details
 
 ## 🎓 Learning Resources
 
-- [Claude Code Chapter](https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/claude-code-features-and-workflows)
+- [qwen code cli Chapter](https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/qwen code-code-features-and-workflows)
 - [Obsidian Fundamentals](https://help.obsidian.md/Getting+started)
 - [MCP Introduction](https://modelcontextprotocol.io/introduction)
-- [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
+- [Agent Skills](https://platform.qwen code.com/docs/en/agents-and-tools/agent-skills/overview)
 
 ---
 

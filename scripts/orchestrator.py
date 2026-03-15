@@ -1,12 +1,12 @@
 """
 Orchestrator for Digital FTE
 
-This script coordinates all watchers, triggers Claude Code processing,
+This script coordinates all watchers, triggers qwen code Code processing,
 and implements the Ralph Wiggum persistence loop for autonomous operation.
 
 Features:
 - Start/stop all watchers
-- Trigger Claude Code processing on demand
+- Trigger qwen code Code processing on demand
 - Ralph Wiggum loop for multi-step task completion
 - Dashboard updates
 - Health monitoring
@@ -15,7 +15,7 @@ Usage:
     # Start all watchers
     python scripts/orchestrator.py start
     
-    # Process Needs_Action folder with Claude
+    # Process Needs_Action folder with qwen code
     python scripts/orchestrator.py process
     
     # Start Ralph Wiggum loop
@@ -51,7 +51,7 @@ class Orchestrator:
     """
     Main orchestrator for the Digital FTE system.
     
-    Coordinates watchers, Claude Code processing, and system health.
+    Coordinates watchers, qwen code Code processing, and system health.
     
     Attributes:
         vault_path: Path to the Obsidian vault
@@ -377,32 +377,32 @@ class Orchestrator:
             return []
         return sorted(self.pending_approval.glob('*.md'))
 
-    def trigger_claude_processing(self, prompt: Optional[str] = None) -> bool:
+    def trigger_qwen_code_processing(self, prompt: Optional[str] = None) -> bool:
         """
-        Trigger Claude Code to process the Needs_Action folder.
+        Trigger qwen code Code to process the Needs_Action folder.
         
         Args:
-            prompt: Custom prompt for Claude (optional)
+            prompt: Custom prompt for qwen code (optional)
             
         Returns:
             True if processing started successfully
         """
-        # Check if Claude Code is available
+        # Check if qwen code Code is available
         try:
             result = subprocess.run(
-                ['claude', '--version'],
+                ['qwen code', '--version'],
                 capture_output=True,
                 text=True,
                 timeout=10
             )
             if result.returncode != 0:
-                self.logger.error("Claude Code not available or not responding")
+                self.logger.error("qwen code Code not available or not responding")
                 return False
         except FileNotFoundError:
-            self.logger.error("Claude Code not found. Install with: npm install -g @anthropic/claude-code")
+            self.logger.error("qwen code Code not found. Install with: npm install -g @anthropic/qwen code-code")
             return False
         except subprocess.TimeoutExpired:
-            self.logger.error("Claude Code version check timed out")
+            self.logger.error("qwen code Code version check timed out")
             return False
         
         # Default prompt
@@ -427,16 +427,16 @@ Instructions:
 Follow the Rules of Engagement in Company_Handbook.md at all times."""
         
         # Create a state file for Ralph loop
-        state_file = self.plans / f'CLAUDE_STATE_{datetime.now().strftime("%Y%m%d_%H%M%S")}.md'
+        state_file = self.plans / f'qwen code_STATE_{datetime.now().strftime("%Y%m%d_%H%M%S")}.md'
         state_content = f"""---
-type: claude_state
+type: qwen code_state
 created: {datetime.now().isoformat()}
 status: processing
 iteration: 1
 max_iterations: {self.max_iterations}
 ---
 
-# Claude Processing State
+# qwen code Processing State
 
 ## Prompt
 {prompt}
@@ -456,12 +456,12 @@ Task is complete when:
         if not self.dry_run:
             state_file.write_text(state_content, encoding='utf-8')
         
-        self.logger.info(f"Triggering Claude Code processing...")
+        self.logger.info(f"Triggering qwen code Code processing...")
         self.logger.info(f"State file: {state_file}")
         
-        # Run Claude Code
+        # Run qwen code Code
         cmd = [
-            'claude',
+            'qwen code',
             '--prompt', prompt,
             '--cwd', str(self.vault_path)
         ]
@@ -478,10 +478,10 @@ Task is complete when:
             return True
             
         except subprocess.TimeoutExpired:
-            self.logger.error("Claude Code processing timed out")
+            self.logger.error("qwen code Code processing timed out")
             return False
         except Exception as e:
-            self.logger.error(f"Error triggering Claude Code: {e}")
+            self.logger.error(f"Error triggering qwen code Code: {e}")
             return False
 
     def ralph_loop(
@@ -493,12 +493,12 @@ Task is complete when:
         """
         Run the Ralph Wiggum persistence loop.
         
-        Keeps Claude working until tasks are complete by re-injecting
-        prompts when Claude tries to exit prematurely.
+        Keeps qwen code working until tasks are complete by re-injecting
+        prompts when qwen code tries to exit prematurely.
         
         Args:
-            prompt: Initial prompt for Claude
-            completion_promise: String Claude outputs when complete
+            prompt: Initial prompt for qwen code
+            completion_promise: String qwen code outputs when complete
             check_file_movement: Also check if files moved to /Done
         """
         self.logger.info("Starting Ralph Wiggum loop...")
@@ -544,10 +544,10 @@ CONTEXT (Iteration {iteration}):
 Continue processing. If task is complete, output: <promise>{completion_promise}</promise>
 """
             
-            # Run Claude Code
+            # Run qwen code Code
             try:
                 cmd = [
-                    'claude',
+                    'qwen code',
                     '--prompt', full_prompt,
                     '--cwd', str(self.vault_path)
                 ]
@@ -572,14 +572,14 @@ Continue processing. If task is complete, output: <promise>{completion_promise}<
                         break
                     
                 else:
-                    self.logger.info("[DRY RUN] Would run Claude Code")
+                    self.logger.info("[DRY RUN] Would run qwen code Code")
                     state['last_output'] = "Dry run - no output"
                     
             except subprocess.TimeoutExpired:
-                self.logger.warning("Claude Code timed out, retrying...")
+                self.logger.warning("qwen code Code timed out, retrying...")
                 state['last_output'] = "Timeout - retrying"
             except Exception as e:
-                self.logger.error(f"Error running Claude Code: {e}")
+                self.logger.error(f"Error running qwen code Code: {e}")
                 state['last_output'] = f"Error: {e}"
             
             # Save state
@@ -751,7 +751,7 @@ def main():
     parser.add_argument(
         '--prompt',
         type=str,
-        help='Custom prompt for Claude processing'
+        help='Custom prompt for qwen code processing'
     )
     parser.add_argument(
         '--max-iterations',
@@ -798,8 +798,8 @@ def main():
         orchestrator.print_status()
     
     elif args.command == 'process':
-        print("🧠 Triggering Claude Code processing...\n")
-        success = orchestrator.trigger_claude_processing(args.prompt)
+        print("🧠 Triggering qwen code Code processing...\n")
+        success = orchestrator.trigger_qwen_code_processing(args.prompt)
         if success:
             print("✅ Processing started")
         else:

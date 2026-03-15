@@ -124,7 +124,7 @@ tier: bronze
 | File operation | `/Pending_Approval/FILE_<description>.md` | 24 hours |
 
 #### Approval Process
-1. Claude creates approval request file with full context
+1. qwen creates approval request file with full context
 2. Human reviews file in `/Pending_Approval/`
 3. To approve: Move file to `/Approved/`
 4. To reject: Move file to `/Rejected/`
@@ -191,7 +191,7 @@ DRY_RUN=true  # Set to 'false' for production
 | Failure | Response | Recovery |
 |---------|----------|----------|
 | Watcher crash | Watchdog restarts | Automatic |
-| Claude Code unavailable | Queue grows | Process when restored |
+| qwen Code unavailable | Queue grows | Process when restored |
 | Gmail API down | Queue emails locally | Process when restored |
 | Banking API timeout | Alert human | Require fresh approval |
 | Vault corruption | Alert human | Restore from backup |

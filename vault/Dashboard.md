@@ -71,7 +71,7 @@ mode: bronze_tier
 |-----------|--------|------------|
 | Gmail Watcher | ⚪ Not configured | - |
 | File Watcher | ⚪ Not configured | - |
-| Claude Code | ⚪ Not tested | - |
+| qwen Code | ⚪ Not tested | - |
 | MCP Servers | ⚪ Not configured | - |
 
 ---
@@ -97,8 +97,8 @@ mode: bronze_tier
 python scripts/gmail_watcher.py
 python scripts/filesystem_watcher.py
 
-# Run Claude Code processing
-claude --prompt "Process /Needs_Action folder"
+# Run qwen Code processing
+qwen --prompt "Process /Needs_Action folder"
 
 # Check system status
 python scripts/orchestrator.py --status

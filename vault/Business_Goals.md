@@ -13,11 +13,11 @@ tier: bronze
 ## 📊 Q1 2026 Objectives
 
 ### Revenue Target
-| Metric | Target | Current | Status |
-|--------|--------|---------|--------|
-| Monthly Goal | $10,000 | $0 | ⚪ Not started |
-| Weekly Goal | $2,500 | $0 | ⚪ Not started |
-| MTD (Month-to-Date) | $4,500 | $0 | ⚪ Not started |
+| Metric              | Target  | Current | Status        |
+| ------------------- | ------- | ------- | ------------- |
+| Monthly Goal        | $10,000 | $0      | ⚪ Not started |
+| Weekly Goal         | $2,500  | $0      | ⚪ Not started |
+| MTD (Month-to-Date) | $4,500  | $0      | ⚪ Not started |
 
 ---
 

@@ -2,11 +2,11 @@
 
 **Tagline:** *Your life and business on autopilot. Local-first, agent-driven, human-in-the-loop.*
 
-This document serves as a comprehensive architectural blueprint and hackathon guide for building a "Digital FTE" (Full-Time Equivalent). It proposes a futuristic, local-first approach to automation where an AI agent—powered by Claude Code and Obsidian—proactively manages personal and business affairs 24/7. You can also think of it as a "Smart Consultant" (General Agents). The focus is on high-level reasoning, autonomy, and flexibility. Think of it as hiring a senior employee who figures out how to solve the problems.
+This document serves as a comprehensive architectural blueprint and hackathon guide for building a "Digital FTE" (Full-Time Equivalent). It proposes a futuristic, local-first approach to automation where an AI agent—powered by Qwen code  and Obsidian—proactively manages personal and business affairs 24/7. You can also think of it as a "Smart Consultant" (General Agents). The focus is on high-level reasoning, autonomy, and flexibility. Think of it as hiring a senior employee who figures out how to solve the problems.
 
-This hackathon takes the concept of a "Personal AI Employee" to its logical extreme. It doesn't just wait for you to type; it proactively manages your "Personal Affairs" (Gmail, WhatsApp, Bank) and your "Business" (Social Media, Payments, Project Tasks) using **Claude Code** as the executor and **Obsidian** as the management dashboard. 
+This hackathon takes the concept of a "Personal AI Employee" to its logical extreme. It doesn't just wait for you to type; it proactively manages your "Personal Affairs" (Gmail, WhatsApp, Bank) and your "Business" (Social Media, Payments, Project Tasks) using **Qwen code ** as the executor and **Obsidian** as the management dashboard. 
 
-All our faculty members and students will build this Personal AI Employee using Claude Code. 
+All our faculty members and students will build this Personal AI Employee using Qwen code . 
 
 **Standout Idea:** The "Monday Morning CEO Briefing," where the AI autonomously audits bank transactions and tasks to report revenue and bottlenecks, transforms the AI from a chatbot into a proactive business partner.
 
@@ -14,7 +14,7 @@ All our faculty members and students will build this Personal AI Employee using 
 
 The proposed stack is robust, privacy-focused, and clever:
 
-* **The Brain:** Claude Code acts as the reasoning engine. We add the Ralph Wiggum Stop hook to let the agent continuously iterate until the assigned task is complete.  
+* **The Brain:** Qwen code  acts as the reasoning engine. We add the Ralph Wiggum Stop hook to let the agent continuously iterate until the assigned task is complete.  
 * **The Memory/GUI:** Obsidian (local Markdown) is used as the dashboard, keeping data local and accessible.  
 * **The Senses (Watchers):** Lightweight Python scripts monitor Gmail, WhatsApp, and filesystems to trigger the AI.  
 * **The Hands (MCP):** Model Context Protocol (MCP) servers handle external actions like sending emails or clicking buttons.
@@ -65,7 +65,7 @@ Before diving into building your Personal AI Employee, ensure you have the follo
 
 | Component | Requirement | Purpose |
 | :---- | :---- | :---- |
-| [Claude Code](https://claude.com/product/claude-code) | Active subscription (Pro or Use Free Gemini API with Claude Code Router) | Primary reasoning engine |
+| [Qwen code ](https://Qwen.com/product/Qwen-code) | Active subscription (Pro or Use Free Gemini API with Qwen code  Router) | Primary reasoning engine |
 | [Obsidian](https://obsidian.md/download) | v1.10.6+ (free) | Knowledge base & dashboard |
 | [Python](https://www.python.org/downloads/) | 3.13 or higher | Sentinel scripts & orchestration |
 | [Node.js](http://Node.js) | v24+ LTS | MCP servers & automation |
@@ -95,9 +95,9 @@ This hackathon assumes intermediate technical proficiency:
 
 * No prior AI/ML experience required
 
-* Able to use and prompt Claude Code
+* Able to use and prompt Qwen code 
 
-* Prompt Claude Code to to convert AI functionality into [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
+* Prompt Qwen code  to to convert AI functionality into [Agent Skills](https://platform.Qwen.com/docs/en/agents-and-tools/agent-skills/overview)
 
 ## **Pre-Hackathon Checklist**
 
@@ -105,7 +105,7 @@ This hackathon assumes intermediate technical proficiency:
 
 2. Create a new Obsidian vault named "AI\_Employee\_Vault"
 
-3. Verify Claude Code works by running: claude \--version
+3. Verify Qwen code  works by running: Qwen \--version
 
 4. Set up a UV Python project
 
@@ -123,11 +123,11 @@ Estimated time: 8-12 hours
 
 * One working Watcher script (Gmail OR file system monitoring)
 
-* Claude Code successfully reading from and writing to the vault
+* Qwen code  successfully reading from and writing to the vault
 
 * Basic folder structure: /Inbox, /Needs\_Action, /Done
 
-* All AI functionality should be implemented as [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
+* All AI functionality should be implemented as [Agent Skills](https://platform.Qwen.com/docs/en/agents-and-tools/agent-skills/overview)
 
 ## **Silver Tier: Functional Assistant**
 
@@ -139,7 +139,7 @@ Estimated time: 20-30 hours
 
 3. Automatically Post on LinkedIn about business to generate sales
 
-4. Claude reasoning loop that creates Plan.md files
+4. Qwen reasoning loop that creates Plan.md files
 
 5. One working MCP server for external action (e.g., sending emails)
 
@@ -147,7 +147,7 @@ Estimated time: 20-30 hours
 
 7. Basic scheduling via cron or Task Scheduler
 
-8. All AI functionality should be implemented as [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
+8. All AI functionality should be implemented as [Agent Skills](https://platform.Qwen.com/docs/en/agents-and-tools/agent-skills/overview)
 
 ## **Gold Tier: Autonomous Employee**
 
@@ -175,7 +175,7 @@ Estimated time: 40+ hours
 
 11. Documentation of your architecture and lessons learned
 
-12. All AI functionality should be implemented as [Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview)
+12. All AI functionality should be implemented as [Agent Skills](https://platform.Qwen.com/docs/en/agents-and-tools/agent-skills/overview)
 
 ## **Platinum Tier: Always-On Cloud \+ Local Executive (Production-ish AI Employee)**
 
@@ -205,7 +205,7 @@ All Gold requirements plus:
 * **The Nerve Center (Obsidian):** Acts as the **GUI (Graphical User Interface)** and **Long-Term Memory**.  
   * **Dashboard.md:** Real-time summary of bank balance, pending messages, and active business projects.  
   * **Company\_Handbook.md:** Contains your "Rules of Engagement" (e.g., "Always be polite on WhatsApp," "Flag any payment over $500 for my approval").  
-* **The Muscle (Claude Code):** Runs in your terminal, pointed at your Obsidian vault. It uses its **File System tools** to read your tasks and write reports. The Ralph Wiggum loop (a Stop hook) keeps Claude iterating until multi-step tasks are complete.
+* **The Muscle (Qwen code ):** Runs in your terminal, pointed at your Obsidian vault. It uses its **File System tools** to read your tasks and write reports. The Ralph Wiggum loop (a Stop hook) keeps Qwen iterating until multi-step tasks are complete.
 
 ### 
 
@@ -213,7 +213,7 @@ All Gold requirements plus:
 
 #### **A. Perception (The "Watchers")**
 
-Since Claude Code can't "listen" to the internet 24/7, you use lightweight **Python Sentinel Scripts** running in the background:
+Since Qwen code  can't "listen" to the internet 24/7, you use lightweight **Python Sentinel Scripts** running in the background:
 
 * **Comms Watcher:** Monitors Gmail and WhatsApp (via local web-automation or APIs) and saves new urgent messages as .md files in a /Needs\_Action folder.  
 * **Finance Watcher:** Downloads local CSVs or calls banking APIs to log new transactions in /Accounting/Current\_Month.md.  
@@ -221,7 +221,7 @@ Since Claude Code can't "listen" to the internet 24/7, you use lightweight **Pyt
 
 # **Watcher Architecture**
 
-The Watcher layer is your AI Employee's sensory system. These lightweight Python scripts run continuously, monitoring various inputs and creating actionable files for Claude to process.
+The Watcher layer is your AI Employee's sensory system. These lightweight Python scripts run continuously, monitoring various inputs and creating actionable files for Qwen to process.
 
 ## **Core Watcher Pattern**
 
@@ -379,23 +379,23 @@ size: {source.stat().st\_size}
 New file dropped for processing.  
 ''')
 
-#### **B. Reasoning (Claude Code)**
+#### **B. Reasoning (Qwen code )**
 
-When the **Watcher** detects a change, it triggers a Claude command:
+When the **Watcher** detects a change, it triggers a Qwen command:
 
 6. **Read:** "Check /Needs\_Action and /Accounting."  
 7. **Think:** "I see a WhatsApp message from a client asking for an invoice and a bank transaction showing a late payment fee."  
-8. **Plan:** Claude creates a Plan.md in Obsidian with checkboxes for the next steps.
+8. **Plan:** Qwen creates a Plan.md in Obsidian with checkboxes for the next steps.
 
 #### **C. Action (The "Hands")**
 
-Model Context Protocol (MCP) servers are Claude Code's hands for interacting with external systems. Each MCP server exposes specific capabilities that Claude can invoke.
+Model Context Protocol (MCP) servers are Qwen code 's hands for interacting with external systems. Each MCP server exposes specific capabilities that Qwen can invoke.
 
-Claude uses custom **MCP (Model Context Protocol)** servers to act:
+Qwen uses custom **MCP (Model Context Protocol)** servers to act:
 
 * **WhatsApp/Social MCP:** To send the reply or post the scheduled update.  
 * **Browser/Payment MCP:** To log into a payment portal, draft a payment, and stop.  
-* **Human-in-the-Loop (HITL):** Claude writes a file: APPROVAL\_REQUIRED\_Payment\_Client\_A.md. It **will not** click "Send" until you move that file to the /Approved folder.
+* **Human-in-the-Loop (HITL):** Qwen writes a file: APPROVAL\_REQUIRED\_Payment\_Client\_A.md. It **will not** click "Send" until you move that file to the /Approved folder.
 
 ## **Recommended MCP Servers**
 
@@ -409,11 +409,11 @@ Claude uses custom **MCP (Model Context Protocol)** servers to act:
 
 ## 
 
-## **Claude Code Configuration**
+## **Qwen code  Configuration**
 
-Configure MCP servers in your Claude Code settings:
+Configure MCP servers in your Qwen code  settings:
 
-// \~/.config/claude-code/mcp.json  
+// \~/.config/Qwen-code/mcp.json  
 {  
   "servers": \[  
     {  
@@ -437,9 +437,9 @@ Configure MCP servers in your Claude Code settings:
 
 ## **Human-in-the-Loop Pattern**
 
-For sensitive actions, Claude writes an approval request file instead of acting directly:
+For sensitive actions, Qwen writes an approval request file instead of acting directly:
 
-\# When Claude detects a sensitive action needed:  
+\# When Qwen detects a sensitive action needed:  
 \# 1\. Create approval request file
 
 \# /Vault/Pending\_Approval/PAYMENT\_Client\_A\_2026-01-07.md  
@@ -469,18 +469,18 @@ The Orchestrator watches the /Approved folder and triggers the actual MCP action
 
 #### **D. Persistence (The "Ralph Wiggum" Loop)** {#d.-persistence-(the-"ralph-wiggum"-loop)}
 
-Claude Code runs in interactive mode \- after processing a prompt, it waits for more input.  
+Qwen code  runs in interactive mode \- after processing a prompt, it waits for more input.  
 To keep your AI Employee working autonomously until a task is complete, use the  
-**Ralph Wiggum pattern**: a Stop hook that intercepts Claude's exit and feeds the prompt back.
+**Ralph Wiggum pattern**: a Stop hook that intercepts Qwen's exit and feeds the prompt back.
 
 **How Does It Work?**
 
 1. Orchestrator creates state file with prompt  
-2. Claude works on task  
-3. Claude tries to exit  
+2. Qwen works on task  
+3. Qwen tries to exit  
 4. Stop hook checks: Is task file in /Done?  
 5. YES → Allow exit (complete)  
-6. NO → Block exit, re-inject prompt, and allow Claude to see its own previous failed output (loop continues).  
+6. NO → Block exit, re-inject prompt, and allow Qwen to see its own previous failed output (loop continues).  
 7. Repeat until complete or max iterations
 
 **Usage**
@@ -494,19 +494,19 @@ To keep your AI Employee working autonomously until a task is complete, use the
 
 **Two Completion Strategies:**
 
-1. **Promise-based (simple):** Claude outputs \`\<promise\>TASK\_COMPLETE\</promise\>\`  
+1. **Promise-based (simple):** Qwen outputs \`\<promise\>TASK\_COMPLETE\</promise\>\`  
 2. **File movement (advanced \- Gold tier)**: Stop hook detects when task file moves to /Done  
 * More reliable (completion is natural part of workflow)  
 * Orchestrator creates state file programmatically  
 * See reference implementation for details
 
-Reference: [https://github.com/anthropics/claude-code/tree/main/.claude/plugins/ralph-wiggum](https://github.com/anthropics/claude-code/tree/main/.claude/plugins/ralph-wiggum)
+Reference: [https://github.com/anthropics/Qwen-code/tree/main/.Qwen/plugins/ralph-wiggum](https://github.com/anthropics/Qwen-code/tree/main/.Qwen/plugins/ralph-wiggum)
 
 ### **3\. Continuous vs. Scheduled Operations**
 
 | Operation Type | Example Task | Local Trigger |
 | :---- | :---- | :---- |
-| **Scheduled** | **Daily Briefing:** Summarize business tasks at 8:00 AM. | cron (Mac/Linux) or Task Scheduler (Win) calls Claude. |
+| **Scheduled** | **Daily Briefing:** Summarize business tasks at 8:00 AM. | cron (Mac/Linux) or Task Scheduler (Win) calls Qwen. |
 | **Continuous** | **Lead Capture:** Watch WhatsApp for keywords like "Pricing." | Python watchdog script monitoring the /Inbox folder. |
 | **Project-Based** | **Q1 Tax Prep:** Categorize 3 months of business expenses. | Manual drag-and-drop of a file into the /Active\_Project folder. |
 
@@ -517,7 +517,7 @@ Reference: [https://github.com/anthropics/claude-code/tree/main/.claude/plugins/
 One of the coolest features you can add is the **Autonomous Business Audit**:
 
 1. **The Trigger:** A scheduled task runs every Sunday night.  
-2. **The Process:** Claude Code reads your Business\_Goals.md, checks your Tasks/Done folder for the week, and checks your Bank\_Transactions.md.  
+2. **The Process:** Qwen code  reads your Business\_Goals.md, checks your Tasks/Done folder for the week, and checks your Bank\_Transactions.md.  
 3. **The Deliverable:** It writes a "Monday Morning CEO Briefing" in Obsidian, highlighting:  
    * **Revenue:** Total earned this week.  
    * **Bottlenecks:** Tasks that took too long.  
@@ -560,7 +560,7 @@ Flag for review if:
 
 ## **Weekly Audit Logic**
 
-Claude uses pattern matching to identify subscription usage:
+Qwen uses pattern matching to identify subscription usage:
 
 \# audit\_logic.py  
 SUBSCRIPTION\_PATTERNS \= {  
@@ -627,7 +627,7 @@ Strong week with revenue ahead of target. One bottleneck identified.
 ### **5\. Tech Stack Summary**
 
 * **Knowledge Base:** Obsidian (Local Markdown).  
-* **Logic Engine:** Claude Code (running claude-4-5-opus or any other LLM using Claude Code Router).  
+* **Logic Engine:** Qwen code  (running Qwen-4-5-opus or any other LLM using Qwen code  Router).  
 * **External Integration:** **MCP Servers** (Local Node.js/Python scripts) for Gmail, WhatsApp, and Banking.  
   * **Playwright** for "Computer Use" (interacting with websites for payments).  
 * **Automation Glue:** A master Python Orchestrator.py that handles the timing and folder watching.
@@ -689,7 +689,7 @@ Every action the AI takes must be logged for review:
 {  
   "timestamp": "2026-01-07T10:30:00Z",  
   "action\_type": "email\_send",  
-  "actor": "claude\_code",  
+  "actor": "Qwen\_code",  
   "target": "client@example.com",  
   "parameters": {"subject": "Invoice \#123"},  
   "approval\_status": "approved",  
@@ -718,7 +718,7 @@ Autonomous systems will fail. Plan for it. This section covers common failure mo
 | :---- | :---- | :---- |
 | Transient | Network timeout, API rate limit | Exponential backoff retry |
 | Authentication | Expired token, revoked access | Alert human, pause operations |
-| Logic | Claude misinterprets message | Human review queue |
+| Logic | Qwen misinterprets message | Human review queue |
 | Data | Corrupted file, missing field | Quarantine \+ alert |
 | System | Orchestrator crash, disk full | Watchdog \+ auto-restart |
 
@@ -754,7 +754,7 @@ When components fail, the system should degrade gracefully:
 
 * Banking API timeout: Never retry payments automatically, always require fresh approval
 
-* Claude Code unavailable: Watchers continue collecting, queue grows for later processing
+* Qwen code  unavailable: Watchers continue collecting, queue grows for later processing
 
 * Obsidian vault locked: Write to temporary folder, sync when available
 
@@ -788,20 +788,20 @@ while True:
 
 ### **Learning Material To Get Started:**
 
-These resources provide a foundational guide on how to integrate Claude Code agentic capabilities with local tools and file systems, which is the exact "foundation layer" required for your personal employee project.
+These resources provide a foundational guide on how to integrate Qwen code  agentic capabilities with local tools and file systems, which is the exact "foundation layer" required for your personal employee project.
 
-Claude Code Chapter of our Textbook  
-[https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/claude-code-features-and-workflows](https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/claude-code-features-and-workflows) 
+Qwen code  Chapter of our Textbook  
+[https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/Qwen-code-features-and-workflows](https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/Qwen-code-features-and-workflows) 
 
-Turning Claude Code into an Employee  
+Turning Qwen code  into an Employee  
 [https://www.facebook.com/reel/1521210822329090](https://www.facebook.com/reel/1521210822329090) 
 
-Claude Code and Obsidian for Personal Automation  
+Qwen code  and Obsidian for Personal Automation  
 [https://www.youtube.com/watch?v=sCIS05Qt79Y](https://www.youtube.com/watch?v=sCIS05Qt79Y)
 
-# Claude Agent Skills \- Automate Your Workflow Fast [https://www.youtube.com/watch?v=nbqqnl3JdR0](https://www.youtube.com/watch?v=nbqqnl3JdR0)
+# Qwen Agent Skills \- Automate Your Workflow Fast [https://www.youtube.com/watch?v=nbqqnl3JdR0](https://www.youtube.com/watch?v=nbqqnl3JdR0)
 
-Claude Code just Built me an AI Agent Team (Claude Code \+ Skills \+ MCP)  
+Qwen code  just Built me an AI Agent Team (Qwen code  \+ Skills \+ MCP)  
 [https://www.youtube.com/watch?v=0J2\_YGuNrDo](https://www.youtube.com/watch?v=0J2_YGuNrDo) 
 
 **Why Odoo (Value-for-Money ERP Perspective)?**
@@ -823,11 +823,11 @@ Curated resources organized by learning stage. Start with Prerequisites, then pr
 | Topic | Resource | Time |
 | :---- | :---- | :---- |
 | Presentation | [https://docs.google.com/presentation/d/1UGvCUk1-O8m5i-aTWQNxzg8EXoKzPa8fgcwfNh8vRjQ/edit?usp=sharing](https://docs.google.com/presentation/d/1UGvCUk1-O8m5i-aTWQNxzg8EXoKzPa8fgcwfNh8vRjQ/edit?usp=sharing)  | 2 hours |
-| Claude Code Fundamentals | [https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/claude-code-features-and-workflows](https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/claude-code-features-and-workflows)  | 3 hour |
+| Qwen code  Fundamentals | [https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/Qwen-code-features-and-workflows](https://agentfactory.panaversity.org/docs/AI-Tool-Landscape/Qwen-code-features-and-workflows)  | 3 hour |
 | Obsidian Fundamentals | help.obsidian.md/Getting+started | 30 min |
 | Python File I/O | realpython.com/read-write-files-python | 1 hour |
 | MCP Introduction | modelcontextprotocol.io/introduction | 1 hour |
-| Agent Skills | platform.claude.com/docs/en/agents-and-tools/agent-skills/overview | 2 hours |
+| Agent Skills | platform.Qwen.com/docs/en/agents-and-tools/agent-skills/overview | 2 hours |
 
 ## 
 
@@ -835,9 +835,9 @@ Curated resources organized by learning stage. Start with Prerequisites, then pr
 
 | Topic | Resource | Type |
 | :---- | :---- | :---- |
-| Claude \+ Obsidian Integration | youtube.com/watch?v=sCIS05Qt79Y | Video |
+| Qwen \+ Obsidian Integration | youtube.com/watch?v=sCIS05Qt79Y | Video |
 | Building MCP Servers | modelcontextprotocol.io/quickstart | Tutorial |
-| Claude Agent Teams | youtube.com/watch?v=0J2\_YGuNrDo | Video |
+| Qwen Agent Teams | youtube.com/watch?v=0J2\_YGuNrDo | Video |
 | Gmail API Setup | developers.google.com/gmail/api/quickstart | Docs |
 | Playwright Automation | playwright.dev/python/docs/intro | Docs |
 
@@ -863,7 +863,7 @@ Curated resources organized by learning stage. Start with Prerequisites, then pr
 
 2. All code must be original or properly attributed open-source
 
-3. Must use Claude Code as the primary reasoning engine
+3. Must use Qwen code  as the primary reasoning engine
 
 4. Projects must include documentation and a demo video
 
@@ -912,11 +912,11 @@ The WhatsApp Watcher detects a message containing the keyword "invoice":
 \# Watcher creates:  
 \# /Vault/Needs\_Action/WHATSAPP\_client\_a\_2026-01-07.md
 
-## **Step 2: Reasoning (Claude Code)**
+## **Step 2: Reasoning (Qwen code )**
 
-The Orchestrator triggers Claude to process the Needs\_Action folder:
+The Orchestrator triggers Qwen to process the Needs\_Action folder:
 
-\# Claude reads the file and creates:  
+\# Qwen reads the file and creates:  
 \# /Vault/Plans/PLAN\_invoice\_client\_a.md
 
 \---  
@@ -939,7 +939,7 @@ Email send requires human approval. See /Pending\_Approval/
 
 ## **Step 3: Approval (Human-in-the-Loop)**
 
-Claude creates an approval request:
+Qwen creates an approval request:
 
 \# /Vault/Pending\_Approval/EMAIL\_invoice\_client\_a.md  
 \---  
@@ -969,7 +969,7 @@ await email\_mcp.send\_email({
 
 ## **Step 5: Completion**
 
-Claude updates the Dashboard and moves files to Done:
+Qwen updates the Dashboard and moves files to Done:
 
 \# /Vault/Dashboard.md updated:  
 \#\# Recent Activity  
@@ -984,13 +984,13 @@ Claude updates the Dashboard and moves files to Done:
 
 ## **Setup Issues**
 
-**Q: Claude Code says "command not found"**
+**Q: Qwen code  says "command not found"**
 
-A: Ensure Claude Code is installed globally and your PATH is configured. Run: npm install \-g @anthropic/claude-code, then restart your terminal.
+A: Ensure Qwen code  is installed globally and your PATH is configured. Run: npm install \-g @anthropic/Qwen-code, then restart your terminal.
 
-**Q: Obsidian vault isn't being read by Claude**
+**Q: Obsidian vault isn't being read by Qwen**
 
-A: Check that you're running Claude Code from the vault directory, or using the \--cwd flag to point to it. Verify file permissions allow read access.
+A: Check that you're running Qwen code  from the vault directory, or using the \--cwd flag to point to it. Verify file permissions allow read access.
 
 **Q: Gmail API returns 403 Forbidden**
 
@@ -1004,13 +1004,13 @@ A: Your OAuth consent screen may need verification, or you haven't enabled the G
 
 A: Use a process manager like PM2 (Node.js) or supervisord (Python) to keep them alive. Alternatively, implement the Watchdog pattern from Section 7\.
 
-**Q: Claude is making incorrect decisions**
+**Q: Qwen is making incorrect decisions**
 
 A: Review your Company\_Handbook.md rules. Add more specific examples. Consider lowering autonomy thresholds so more actions require approval.
 
 **Q: MCP server won't connect**
 
-A: Check that the server process is running (ps aux | grep mcp). Verify the path in mcp.json is absolute. Check Claude Code logs for connection errors.
+A: Check that the server process is running (ps aux | grep mcp). Verify the path in mcp.json is absolute. Check Qwen code  logs for connection errors.
 
 ## 
 
@@ -1020,7 +1020,7 @@ A: Check that the server process is running (ps aux | grep mcp). Verify the path
 
 A: Never commit .env files. Use environment variables. Regularly rotate credentials. Implement the audit logging from Section 6 to track all access.
 
-**Q: What if Claude tries to pay the wrong person?**
+**Q: What if Qwen tries to pay the wrong person?**
 
 A: That's why HITL is critical for payments. Any payment action should create an approval file first. Never auto-approve payments to new recipients.
 
@@ -1111,7 +1111,7 @@ The following ASCII diagram illustrates the complete system architecture:
 ┌─────────────────────────────────────────────────────────────────┐  
 │                    REASONING LAYER                              │  
 │  ┌───────────────────────────────────────────────────────────┐ │  
-│  │                      CLAUDE CODE                          │ │  
+│  │                      Qwen code                           │ │  
 │  │   Read → Think → Plan → Write → Request Approval          │ │  
 │  └───────────────────────────────────────────────────────────┘ │  
 └────────────────────────────────┬────────────────────────────────┘  

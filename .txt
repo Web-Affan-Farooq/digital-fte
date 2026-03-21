@@ -1,0 +1,52 @@
+I've noticed a evry specific problem , there is an issue happening first i run the gmail mcp server . Then run the orchestrator status command in another terminal . While gmail mcp is clearly running , the status still showing that no mcp running . I'm talking about the static command which print status and exits immediately , not one who persist the process 
+
+```bash
+uv run python scripts/orchestrator.py status // this not that 'uv run python scripts/orchestrator.py start'
+```
+I've reviewed the code and there is something crutial missing , you're printing stale state of the system . 
+
+I think you should create a json file which should store the state of system . Checkout the placeholder json state file
+```json
+{
+    "application_started":true, // indicates wheather is system is working now or not .
+    "mcp_servers":[ // list of mcp servers and thier state 
+        {
+            "name":"linkedin",
+            "running":false
+        },
+        {
+            "name":"email",
+            "running":false
+        },
+
+    ],
+    "watchers":[
+        // list of watchers and thier state 
+                {
+            "name":"filesystem",
+            "running":false
+        },
+        {
+            "name":"gmail",
+            "running":false,
+        }
+        {
+            "name":"whatsapp",
+            "running":false,
+        }
+    ]
+}
+```
+
+this is only for idea , its not actual .
+
+## Deliverables :
+- Make sure that you create each and every crutial state field in this file 
+- All files , watchers , and everything should report to this json file in realtime if anything changes .
+
+## Suggested workflow : 
+filesystem started successfully --> update its status in that json file 
+
+mcp server stops ----> update its sttaus in that json file 
+
+first , Read all mcp servers , watchers and @doc.md then **Only suggest me the json structure how state should be looking like and ask permission before writing file** after that if the struture is decided then start implementing state management in python files . 

@@ -12,13 +12,13 @@ mode: bronze_tier
 
 ## 📊 Executive Summary
 
-| Metric | Value | Status |
-|--------|-------|--------|
-| **System Status** | 🟢 Operational | Normal |
-| **Tier** | Bronze (Foundation) | Active |
-| **Last Activity** | - | - |
-| **Pending Actions** | 0 | - |
-| **Tasks Completed Today** | 0 | - |
+| Metric                    | Value               | Status |
+| ------------------------- | ------------------- | ------ |
+| **System Status**         | 🟢 Operational      | Normal |
+| **Tier**                  | Bronze (Foundation) | Active |
+| **Last Activity**         | -                   | -      |
+| **Pending Actions**       | 0                   | -      |
+| **Tasks Completed Today** | 0                   | -      |
 
 ---
 
@@ -54,11 +54,11 @@ mode: bronze_tier
 ## 📈 Business Metrics
 
 ### Revenue Tracking
-| Period | Target | Actual | Status |
-|--------|--------|--------|--------|
-| This Week | $0 | $0 | ⚪ Not tracked |
-| MTD | $0 | $0 | ⚪ Not tracked |
-| QTD | $0 | $0 | ⚪ Not tracked |
+| Period    | Target | Actual | Status        |
+| --------- | ------ | ------ | ------------- |
+| This Week | $0     | $0     | ⚪ Not tracked |
+| MTD       | $0     | $0     | ⚪ Not tracked |
+| QTD       | $0     | $0     | ⚪ Not tracked |
 
 ### Active Projects
 *No active projects configured.*
@@ -67,12 +67,12 @@ mode: bronze_tier
 
 ## 🔧 System Health
 
-| Component | Status | Last Check |
-|-----------|--------|------------|
-| Gmail Watcher | ⚪ Not configured | - |
-| File Watcher | ⚪ Not configured | - |
-| qwen Code | ⚪ Not tested | - |
-| MCP Servers | ⚪ Not configured | - |
+| Component     | Status           | Last Check |
+| ------------- | ---------------- | ---------- |
+| Gmail Watcher | ⚪ Not configured | -          |
+| File Watcher  | ⚪ Not configured | -          |
+| qwen Code     | ⚪ Not tested     | -          |
+| MCP Servers   | ⚪ Not configured | -          |
 
 ---
 
@@ -108,14 +108,15 @@ python scripts/orchestrator.py --status
 
 ## 📋 Configuration Status
 
-| Component | Configured | Status |
-|-----------|------------|--------|
-| Obsidian Vault | ✅ Yes | Ready |
-| Folder Structure | ✅ Yes | Ready |
-| Company Handbook | ⏳ Pending | Setup required |
-| Business Goals | ⏳ Pending | Setup required |
-| Gmail API | ⏳ Pending | Credentials needed |
-| Environment Variables | ⏳ Pending | .env setup needed |
+| Component             | Configured | Status             |
+| --------------------- | ---------- | ------------------ |
+| Obsidian Vault        | ✅ Yes      | Ready              |
+| Folder Structure      | ✅ Yes      | Ready              |
+| Company Handbook      | ⏳ Pending  | Setup required     |
+| Business Goals        | ⏳ Pending  | Setup required     |
+| Gmail API             | ⏳ Pending  | Credentials needed |
+| Environment Variables | ⏳ Pending  | .env setup needed  |
+|                       |            |                    |
 
 ---
 

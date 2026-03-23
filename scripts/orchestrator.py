@@ -52,6 +52,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
 from rich import print
+from config.settings import dry_run
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
@@ -837,7 +838,7 @@ def main():
     parser.add_argument(
         '--dry-run',
         action='store_true',
-        default=os.getenv('DRY_RUN', 'true').lower() == 'true',
+        default=dry_run,
         help='Enable dry run mode'
     )
 

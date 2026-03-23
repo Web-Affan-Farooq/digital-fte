@@ -1,1 +1,0 @@
-"Invoice from Client A - Amount $500 - Payment due ASAP" 

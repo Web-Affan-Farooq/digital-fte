@@ -22,7 +22,7 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-
+from config.settings import dry_run
 
 class BaseWatcher(ABC):
     """
@@ -61,8 +61,7 @@ class BaseWatcher(ABC):
         self.processed_ids: set = set()
         
         # Dry run mode (from environment)
-        import os
-        self.dry_run = os.getenv('DRY_RUN', 'true').lower() == 'true'
+        self.dry_run = dry_run
 
     def _ensure_directories(self) -> None:
         """Create necessary directories if they don't exist."""

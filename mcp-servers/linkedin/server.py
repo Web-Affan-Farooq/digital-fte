@@ -24,6 +24,7 @@ from pathlib import Path
 from typing import Optional, Dict, Any, List
 
 from fastmcp import FastMCP
+from config import dry_run
 
 # Playwright imports
 try:
@@ -195,9 +196,7 @@ def create_post(
     
     Returns:
         Dictionary with status and post details
-    """
-    dry_run = os.getenv('DRY_RUN', 'true').lower() == 'true'
-    
+    """    
     # Append hashtags
     if hashtags:
         hashtag_text = ' '.join(f'#{tag}' for tag in hashtags)

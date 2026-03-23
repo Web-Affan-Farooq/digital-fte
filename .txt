@@ -1,46 +1,112 @@
-I've noticed a evry specific problem , there is an issue happening first i run the gmail mcp server . Then run the orchestrator status command in another terminal . While gmail mcp is clearly running , the status still showing that no mcp running . I'm talking about the static command which print status and exits immediately , not one who persist the process 
 
-```bash
-uv run python scripts/orchestrator.py status // this not that 'uv run python scripts/orchestrator.py start'
-```
-I've reviewed the code and there is something crutial missing , you're printing stale state of the system . 
+(digital-fte) G:\digital-fte>uv run python scripts/mcp-client.py list --url http://127.0.0.1:8802/mcp
+Error: Client failed to connect: All connection attempts failed
+Make sure the MCP server is running at http://127.0.0.1:8802/mcp
 
-I think you should create a json file which should store the state of system . Checkout the placeholder json state file
-```json
-{
-    "application_started":true, // indicates wheather is system is working now or not .
-    "mcp_servers":[ // list of mcp servers and thier state 
-        {
-            "name":"linkedin",
-            "running":false
-        },
-        {
-            "name":"email",
-            "running":false
-        },
+(digital-fte) G:\digital-fte>uv run python scripts/mcp-client.py list --url http://127.0.0.1:8801/mcp
 
-    ],
-    "watchers":[
-        // list of watchers and thier state 
-                {
-            "name":"filesystem",
-            "running":false
-        },
-        {
-            "name":"gmail",
-            "running":false,
-        }
-        {
-            "name":"whatsapp",
-            "running":false,
-        }
-    ]
-}
-```
+Available tools from http://127.0.0.1:8801/mcp:
 
-this is only for idea , its not actual .
+------------------------------------------------------------
 
-## Deliverables :
+send_email
+  Description: Send an email via Gmail.
+
+Args:
+    to: Recipient email address
+    subject: Email subject
+    body: Email body content
+    from_email: Sender email (optional, uses authenticated account)
+    cc: CC recipients (comma-separated)
+    bcc: BCC recipients (comma-separated)
+    html: Whether body is HTML (default: False)
+
+Returns:
+    Dictionary with status and message_id or error
+  Parameters:
+    - to (required):
+    - subject (required):
+    - body (required):
+    - from_email (optional):
+    - cc (optional):
+    - bcc (optional):
+    - html (optional):
+
+draft_email
+  Description: Create a draft email in Gmail (does not send).
+
+Args:
+    to: Recipient email address
+    subject: Email subject
+    body: Email body content
+    from_email: Sender email (optional)
+    cc: CC recipients (comma-separated)
+    html: Whether body is HTML (default: False)
+
+Returns:
+    Dictionary with draft_id and status
+  Parameters:
+    - to (required):
+    - subject (required):
+    - body (required):
+    - from_email (optional):
+    - cc (optional):
+    - html (optional):
+
+search_emails
+  Description: Search emails in Gmail.
+
+Args:
+    query: Gmail search query (e.g., "is:unread", "from:example@gmail.com")
+    max_results: Maximum number of results (default: 10)
+
+uv run python scripts/mcp-client.py call --url http://127.0.0.1:8801/mcp -t search-emails -p "{\"query\":\"from:affanfarooq824@gmail.com\", \"max_results\":\"10\"}"
+
+
+Returns:
+    Dictionary with list of matching emails
+  Parameters:
+    - query (required):
+    - max_results (optional):
+
+get_email_content
+  Description: Get full content of a specific email.
+
+Args:
+    message_id: Gmail message ID
+
+Returns:
+    Dictionary with email content and attachments info
+  Parameters:
+    - message_id (required):
+
+mark_as_read
+  Description: Mark an email as read.
+
+Args:
+    message_id: Gmail message ID
+
+Returns:
+    Dictionary with status
+  Parameters:
+    - message_id (required):
+
+------------------------------------------------------------
+
+
+First you've to tell me , in the orchesterator , how you're counting if a watcher of mcp server is running ? are you counting process ? answer me in yes or no .
+
+--- 
+
+I think you should have to consider following changes 
+
+- There is not need to maintain history of operations 
+- you dont have to track error or anything in it . Neither store error count in it for now .
+
+## Tasks 1:
+- Write a document about all the json fields in this json file as a clear and consise readme file `SETTINGS.md` in the project root .
+
+Start implementing the state management 
 - Make sure that you create each and every crutial state field in this file 
 - All files , watchers , and everything should report to this json file in realtime if anything changes .
 
@@ -49,4 +115,4 @@ filesystem started successfully --> update its status in that json file
 
 mcp server stops ----> update its sttaus in that json file 
 
-first , Read all mcp servers , watchers and @doc.md then **Only suggest me the json structure how state should be looking like and ask permission before writing file** after that if the struture is decided then start implementing state management in python files . 
+first checkout watchers and mcp servers, then **Only proposed me the json structure how state should be looking like and ask permission before writing file** after that if the struture is decided then start implementing json state management in python files .

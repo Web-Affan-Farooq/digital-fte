@@ -32,7 +32,9 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
-
+# from config import dry_run
+import os
+dry_run = os.getenv('DRY_RUN', 'false').lower() == 'true'
 
 # ===========================================
 # Server Configuration
@@ -152,10 +154,7 @@ def send_email(
     
     Returns:
         Dictionary with status and message_id or error
-    """
-    # Check dry run mode
-    dry_run = os.getenv('DRY_RUN', 'true').lower() == 'true'
-    
+    """    
     if dry_run:
         return {
             'status': 'dry_run',
@@ -515,5 +514,23 @@ def mark_as_read(message_id: str) -> Dict[str, Any]:
 # ===========================================
 
 if __name__ == "__main__":
-    # Run server
-    mcp.run()
+    import argparse
+
+    parser = argparse.ArgumentParser(description='Email MCP Server')
+    parser.add_argument('--transport', default='stdio', choices=['stdio', 'http'],
+                        help='Transport protocol (default: stdio)')
+    parser.add_argument('--port', type=int, default=8801,
+                        help='Port for HTTP transport (default: 8801)')
+    parser.add_argument('--host', default='127.0.0.1',
+                        help='Host for HTTP transport (default: 127.0.0.1)')
+    parser.add_argument('--path', default='/mcp',
+                        help='URL path for HTTP transport (default: /mcp)')
+
+    args = parser.parse_args()
+
+    if args.transport == 'http':
+        print(f"Starting Email MCP Server with HTTP transport on {args.host}:{args.port}{args.path}")
+        mcp.run(transport='http', host=args.host, port=args.port)
+    else:
+        print("Starting Email MCP Server with stdio transport")
+        mcp.run()

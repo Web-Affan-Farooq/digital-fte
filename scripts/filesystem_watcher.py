@@ -27,6 +27,7 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+from config.settings import dry_run
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
@@ -535,7 +536,7 @@ def main():
     print(f"Vault: {args.vault}")
     print(f"Drop folder: {args.drop_folder or './vault/Inbox/Drop'}")
     print(f"Check interval: {args.interval}s")
-    print(f"Dry run: {os.getenv('DRY_RUN', 'true')}")
+    print(f"Dry run: {dry_run}")
     print(f"Watchdog: {not args.no_watchdog and WATCHDOG_AVAILABLE}")
     print("\nStarting watcher... (Press Ctrl+C to stop)\n")
     print(f"Drop files into: {Path(args.vault) / 'Inbox' / 'Drop'}\n")

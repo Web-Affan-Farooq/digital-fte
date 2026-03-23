@@ -11,14 +11,10 @@
             "id": "08862ac8010d1cb7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Company_Handbook.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Company_Handbook"
+              "title": "New tab"
             }
           }
         ]
@@ -185,12 +181,16 @@
   },
   "active": "08862ac8010d1cb7",
   "lastOpenFiles": [
+    "Needs_Action/EMAIL_Free forever claude code cli setup with open route_20260321_111700.md",
+    "Needs_Action/EMAIL_Connect Payoneer or Stripe to start getting paid 💸_20260321_111700.md",
+    "Needs_Action/EMAIL_[GitHub] Vercel is requesting updated permissions_20260321_111700.md",
+    "Needs_Action/EMAIL_Home _ AI for Everyone_20260321_111700.md",
+    "Company_Handbook.md",
     "Business_Goals.md",
     "Dashboard.md",
     "Needs_Action/FILE_invoice_test_20260320_220129.md",
     "Needs_Action/FILE_hello_20260320_220129.md",
     "Logs/orchestrator_2026-03-17.log",
-    "Logs/watcher_2026-03-17.log",
-    "Company_Handbook.md"
+    "Logs/watcher_2026-03-17.log"
   ]
 }

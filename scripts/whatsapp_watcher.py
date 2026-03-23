@@ -26,6 +26,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional
 
 from dotenv import load_dotenv
+from config.settings import dry_run
 
 # Load environment variables
 load_dotenv()
@@ -487,7 +488,7 @@ def main():
     print(f"Vault: {args.vault}")
     print(f"Session path: {args.session_path or '~/.digital_fte/sessions/whatsapp'}")
     print(f"Check interval: {args.interval}s")
-    print(f"Dry run: {os.getenv('DRY_RUN', 'true')}")
+    print(f"Dry run: {dry_run}")
     print("\nStarting watcher... (Press Ctrl+C to stop)")
     print("Note: First run requires QR code scan to login to WhatsApp Web\n")
     

@@ -2,14 +2,21 @@
 MCP Client for Digital FTE
 
 Helper script to call MCP server tools via HTTP or stdio.
+Uses FastMCP client for proper MCP protocol handling.
 
 Usage:
     # List available tools
-    uv run python scripts/mcp-client.py list --url http://localhost:8801
-    
+    uv run python scripts/mcp-client.py list --url http://localhost:8801/mcp
+
     # Call a tool
-    uv run python scripts/mcp-client.py call --url http://localhost:8801 -t send_email -p '{"to": "test@example.com", "subject": "Test", "body": "Hello"}'
-    
+uv run python scripts/mcp-client.py call ^
+  --url http://localhost:8801/mcp ^
+  -t send_email ^
+  -p "{\"to\": \"affanfarooq824@gmail.com\", \"subject\": \"Test email\", \"body\": \"Hello affan\"}"
+
+  # List tools
+  
+
     # Call via stdio (for local MCP servers)
     uv run python scripts/mcp-client.py call-stdio -s email -t send_email -p '{"to": "test@example.com"}'
 """
@@ -20,72 +27,89 @@ import sys
 from pathlib import Path
 
 try:
-    import httpx
-    HTTPX_AVAILABLE = True
+    from fastmcp import Client
+    from fastmcp.client.transports import StreamableHttpTransport, SSETransport
+    FASTMCP_AVAILABLE = True
 except ImportError:
-    HTTPX_AVAILABLE = False
-    print("httpx not installed. Install with: uv add httpx")
+    FASTMCP_AVAILABLE = False
+    print("fastmcp not installed. Install with: uv add fastmcp")
+
+
+def get_transport(url: str):
+    """Get appropriate transport for the URL."""
+    # Try StreamableHttpTransport first (default for FastMCP 3.x)
+    try:
+        return StreamableHttpTransport(url=url)
+    except Exception:
+        # Fallback to SSE transport for older servers
+        return SSETransport(url=url)
+
+
+async def list_tools_async(server_url: str) -> None:
+    """List available tools from MCP server (async)."""
+    if not FASTMCP_AVAILABLE:
+        print("fastmcp not available")
+        return
+
+    try:
+        transport = get_transport(server_url)
+        client = Client(transport)
+        
+        async with client:
+            tools = await client.list_tools()
+            
+            print(f"\nAvailable tools from {server_url}:\n")
+            print("-" * 60)
+
+            for tool in tools:
+                print(f"\n{tool.name}")
+                print(f"  Description: {tool.description or 'No description'}")
+                if tool.inputSchema and 'properties' in tool.inputSchema:
+                    schema = tool.inputSchema
+                    print("  Parameters:")
+                    for param, details in schema['properties'].items():
+                        required = param in schema.get('required', [])
+                        desc = details.get('description', '') if isinstance(details, dict) else ''
+                        print(f"    - {param} {'(required)' if required else '(optional)'}: {desc}")
+
+            print("\n" + "-" * 60)
+
+    except Exception as e:
+        print(f"Error: {e}")
+        print(f"Make sure the MCP server is running at {server_url}")
+
+
+async def call_tool_async(server_url: str, tool_name: str, params: dict) -> None:
+    """Call a tool on MCP server (async)."""
+    if not FASTMCP_AVAILABLE:
+        print("fastmcp not available")
+        return
+
+    try:
+        transport = get_transport(server_url)
+        client = Client(transport)
+        
+        async with client:
+            result = await client.call_tool(tool_name, params)
+            
+            print(f"\nTool: {tool_name}")
+            print(f"Result: {result}")
+
+    except Exception as e:
+        print(f"Error: {e}")
+        print(f"Make sure the MCP server is running at {server_url}")
 
 
 def list_tools(server_url: str) -> None:
     """List available tools from MCP server."""
-    if not HTTPX_AVAILABLE:
-        print("httpx not available")
-        return
-    
-    try:
-        response = httpx.get(f"{server_url}/tools")
-        response.raise_for_status()
-        tools = response.json()
-        
-        print(f"\nAvailable tools from {server_url}:\n")
-        print("-" * 60)
-        
-        for tool in tools:
-            print(f"\n{tool.get('name', 'unknown')}")
-            print(f"  Description: {tool.get('description', 'No description')}")
-            if 'inputSchema' in tool:
-                schema = tool['inputSchema']
-                if 'properties' in schema:
-                    print("  Parameters:")
-                    for param, details in schema['properties'].items():
-                        required = param in schema.get('required', [])
-                        print(f"    - {param} {'(required)' if required else '(optional)'}: {details.get('description', '')}")
-        
-        print("\n" + "-" * 60)
-        
-    except httpx.ConnectError:
-        print(f"Could not connect to {server_url}")
-        print("Make sure the MCP server is running.")
-    except Exception as e:
-        print(f"Error: {e}")
+    import asyncio
+    asyncio.run(list_tools_async(server_url))
 
 
 def call_tool(server_url: str, tool_name: str, params: dict) -> None:
     """Call a tool on MCP server."""
-    if not HTTPX_AVAILABLE:
-        print("httpx not available")
-        return
-    
-    try:
-        response = httpx.post(
-            f"{server_url}/tools/{tool_name}/invoke",
-            json=params,
-            timeout=60.0
-        )
-        response.raise_for_status()
-        result = response.json()
-        
-        print(f"\nTool: {tool_name}")
-        print(f"Result: {json.dumps(result, indent=2)}")
-        
-    except httpx.ConnectError:
-        print(f"Could not connect to {server_url}")
-        print("Make sure the MCP server is running.")
-    except httpx.TimeoutException:
-        print("Request timed out")
-    except Exception as e:
-        print(f"Error: {e}")
+    import asyncio
+    asyncio.run(call_tool_async(server_url, tool_name, params))
 
 
 def call_tool_stdio(server_name: str, tool_name: str, params: dict) -> None:

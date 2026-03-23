@@ -27,6 +27,7 @@ from datetime import datetime
 from email import message_from_bytes
 from pathlib import Path
 from typing import Any, Dict, List, Optional
+from config.settings import dry_run
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
@@ -440,7 +441,7 @@ def main():
     print("=" * 50)
     print(f"Vault: {args.vault}")
     print(f"Check interval: {args.interval}s")
-    print(f"Dry run: {os.getenv('DRY_RUN', 'true')}")
+    print(f"Dry run: {dry_run}")
     print("\nStarting watcher... (Press Ctrl+C to stop)\n")
     
     try:

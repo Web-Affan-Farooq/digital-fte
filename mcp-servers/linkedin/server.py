@@ -24,7 +24,8 @@ from pathlib import Path
 from typing import Optional, Dict, Any, List
 
 from fastmcp import FastMCP
-from config import dry_run
+import os
+dry_run = os.getenv('DRY_RUN', 'false').lower() == 'true'
 
 # Playwright imports
 try:

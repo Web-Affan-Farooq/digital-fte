@@ -22,7 +22,10 @@ from abc import ABC, abstractmethod
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-from config.settings import dry_run
+
+## Check if dryrun enabled 
+import os 
+dry_run = os.getenv('DRY_RUN', 'false').lower() == 'true'
 
 class BaseWatcher(ABC):
     """

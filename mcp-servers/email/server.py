@@ -78,7 +78,7 @@ def authenticate_gmail() -> Optional[Any]:
         return _gmail_service
     
     creds_path, token_path = get_credentials_path()
-    SCOPES = ['https://www.googleapis.com/auth/gmail.send']
+    SCOPES = ['https://www.googleapis.com/auth/gmail.send', 'https://www.googleapis.com/auth/gmail.readonly', 'https://www.googleapis.com/auth/gmail.modify']
     
     creds = None
     

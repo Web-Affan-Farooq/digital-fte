@@ -1,0 +1,55 @@
+
+(digital-fte) G:\digital-fte>uv run python scripts/mcp-client.py list --url http://127.0.0.1:8802/mcp
+
+Available tools from http://127.0.0.1:8802/mcp:
+
+------------------------------------------------------------
+
+create_post
+  Description: Create a post on LinkedIn.
+
+Args:
+    content: Post content text
+    image_path: Optional path to image to attach
+    hashtags: Optional list of hashtags to append
+
+Returns:
+    Dictionary with status and post details
+  Parameters:
+    - content (required):
+    - image_path (optional):
+    - hashtags (optional):
+
+create_draft_post
+  Description: Create a draft post for LinkedIn (does not publish).
+Prepares the content and saves to vault for approval.
+
+Args:
+    content: Post content text
+    hashtags: Optional list of hashtags to append
+
+uv run python scripts/mcp-client.py call --url http://localhost:8802/mcp -t create_draft_post -p "{\"content\": \"hello linkedin\" ,\"hashtags\": [ \"testing digital fte\"],}"
+
+uv run python mcp-servers/linkedin/server.py --publish LINKEDIN_POST_20260324_203155
+
+Returns:
+    Dictionary with draft details and file path
+  Parameters:
+    - content (required):
+    - hashtags (optional):
+
+get_profile_info
+  Description: Get current LinkedIn profile information.
+
+Returns:
+    Dictionary with profile details
+  Parameters:
+
+close_session
+  Description: Close LinkedIn browser session.
+
+Returns:
+    Dictionary with status
+  Parameters:
+
+------------------------------------------------------------

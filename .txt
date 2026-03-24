@@ -1,7 +1,9 @@
+## Problem :
+The authentication with gmail API is setup correctly in `gmail_watcher.py` , however , the mcp server lacks the authentication 
+The mcp server is not authenticating with correct scopes , resulting in insufficient permissions in gmail api .
 
-(digital-fte) G:\digital-fte>uv run python scripts/mcp-client.py list --url http://127.0.0.1:8802/mcp
-Error: Client failed to connect: All connection attempts failed
-Make sure the MCP server is running at http://127.0.0.1:8802/mcp
+## Task :
+Read the file @mcp-servers/email/server.py and make sure to correctly implement a fix so that this file will take and additional command line argument `--auth` dedicated to authenticating with correct scopes  
 
 (digital-fte) G:\digital-fte>uv run python scripts/mcp-client.py list --url http://127.0.0.1:8801/mcp
 
@@ -43,6 +45,8 @@ Args:
     cc: CC recipients (comma-separated)
     html: Whether body is HTML (default: False)
 
+uv run python scripts/mcp-client.py call --url http://localhost:8801/mcp -t draft_email -p "{\"to\": \"affanfarooq824@gmail.com\" ,\"subject\": \"testing digital fte\", \"from_email\": \"affanamir903@gmail.com\" , \"body\": \"hello affan 2 how are you ?\"}"
+
 Returns:
     Dictionary with draft_id and status
   Parameters:
@@ -60,8 +64,7 @@ Args:
     query: Gmail search query (e.g., "is:unread", "from:example@gmail.com")
     max_results: Maximum number of results (default: 10)
 
-uv run python scripts/mcp-client.py call --url http://127.0.0.1:8801/mcp -t search-emails -p "{\"query\":\"from:affanfarooq824@gmail.com\", \"max_results\":\"10\"}"
-
+uv run python scripts/mcp-client.py call --url http://localhost:8801/mcp -t search_emails -p "{\"query\": \"from:affanfarooq824@gmail.com\"}"
 
 Returns:
     Dictionary with list of matching emails
@@ -74,6 +77,9 @@ get_email_content
 
 Args:
     message_id: Gmail message ID
+    
+uv run python scripts/mcp-client.py call --url http://localhost:8801/mcp -t get_email_content -p "{\"message_id\": \"19d1abbab54a4cc4\"}"
+
 
 Returns:
     Dictionary with email content and attachments info
@@ -85,6 +91,8 @@ mark_as_read
 
 Args:
     message_id: Gmail message ID
+
+    uv run python scripts/mcp-client.py call --url http://localhost:8801/mcp -t mark_as_read -p "{\"message_id\": \"19d1abbab54a4cc4\"}"
 
 Returns:
     Dictionary with status

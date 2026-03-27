@@ -194,4 +194,4 @@ class MyWatcher(BaseWatcher):
 
 - [`doc.md`](doc.md) - Full architectural blueprint and hackathon guide
 - [`README.md`](README.md) - Project summary
-- [`.agents/skills/browsing-with-playwright/SKILL.md`](.agents/skills/browsing-with-playwright/SKILL.md) - Browser automation skill
+- [`Agent skills`](.agents/skills) - Relevant agent skills

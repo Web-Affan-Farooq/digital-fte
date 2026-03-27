@@ -67,7 +67,7 @@ copy .env.example .env
 # Place in ~/.gmail_watcher/credentials.json
 
 # First run will auto-authenticate
-uv run python scripts/gmail_watcher.py --vault ./vault
+uv run python -m GmailWatcher.main --vault ./vault
 ```
 
 ### 4. Open Vault in Obsidian
@@ -83,16 +83,16 @@ File → Open Vault → Select G:\digital-fte\vault
 .venv\Scripts\activate
 
 # Check system status
-uv run python scripts/orchestrator.py status
+uv run python -m Orchestrator.main status
 
 # Start all watchers
-uv run python scripts/orchestrator.py start
+uv run python -m Orchestrator.main start
 
 # Process files with Qwen (interactive mode - requires approval)
-uv run python scripts/orchestrator.py process
+uv run python -m Orchestrator.main process
 
 # Process files with Qwen (autonomous mode - auto-approves actions)
-uv run python scripts/orchestrator.py process --yolo
+uv run python -m Orchestrator.main process --yolo
 ```
 
 ---
@@ -118,7 +118,7 @@ G:\digital-fte\
 │   ├── base_watcher.py           # Base class for all watchers
 │   ├── gmail_watcher.py          # Gmail monitoring
 │   ├── filesystem_watcher.py     # File drop monitoring
-│   ├── whatsapp_watcher.py       # WhatsApp Web monitoring
+│   ├── WhatsappWatcher           # WhatsApp Web monitoring
 │   ├── orchestrator.py           # Main coordinator + Ralph loop
 │   └── mcp-client.py             # MCP client helper
 └── vault/                        # Obsidian vault
@@ -202,16 +202,17 @@ MAX_ITERATIONS=10
 .venv\Scripts\activate
 
 # Start all watchers (runs in background)
-uv run python scripts/orchestrator.py start
+uv run python -m Orchestrator.main start
 
 # Start specific watchers
-uv run python scripts/orchestrator.py start --watchers filesystem whatsapp
+uv run python -m Orchestrator.main start --watchers filesystem whatsapp
 
 # Start Gmail watcher (if configured)
-uv run python scripts/gmail_watcher.py --vault ./vault
+uv run python -m GmailWatcher.main --vault ./vault
 
 # Start filesystem watcher (monitors vault/Inbox/Drop)
-uv run python scripts/filesystem_watcher.py --vault ./vault
+uv run python -m FilesystemWatcher.main --vault ./vault
+
 ```
 
 ### Start MCP Servers
@@ -232,29 +233,34 @@ uv run python mcp-servers/linkedin/server.py --transport http --port 8802
 
 ```bash
 # Interactive mode (requires approval for each action)
-uv run python scripts/orchestrator.py process
+uv run python -m Orchestrator.main process
 
 # Custom prompt
-uv run python scripts/orchestrator.py process --prompt "Review all pending approvals"
+uv run python -m Orchestrator.main process --prompt "Review all pending approvals"
+
 
 # Autonomous mode (YOLO - auto-approves all actions)
-uv run python scripts/orchestrator.py process --yolo
+uv run python -m Orchestrator.main process --yolo
+
 
 # Ralph Wiggum loop (autonomous multi-step processing)
-uv run python scripts/orchestrator.py ralph "Process all files in /Needs_Action"
+uv run python -m Orchestrator.main ralph "Process all files in /Needs_Action"
+
 ```
 
 ### Process Approved Actions
 
 ```bash
 # Execute all approved actions (emails, LinkedIn posts)
-uv run python scripts/orchestrator.py process-approvals
+uv run python -m Orchestrator.main process-approvals
+
 ```
 
 ### Check Status
 
 ```bash
-uv run python scripts/orchestrator.py status
+uv run python -m Orchestrator.main status
+
 ```
 
 ---
@@ -419,13 +425,14 @@ qwen --version
 
 **Solution 1 - Use YOLO mode (full autonomy):**
 ```bash
-uv run python scripts/orchestrator.py process --yolo
+uv run python -m Orchestrator.main process --yolo
+
 ```
 
 **Solution 2 - Run interactively:**
 ```bash
 # Qwen will wait for your approval in the terminal
-uv run python scripts/orchestrator.py process
+uv run python -m Orchestrator.main process 
 ```
 
 ### Gmail API error

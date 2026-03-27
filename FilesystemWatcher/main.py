@@ -27,12 +27,12 @@ import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Dict, List, Optional
-from config.settings import dry_run
+dry_run = os.getenv('DRY_RUN', 'false').lower() == 'true'
 
 # Add parent directory to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
 
-from base_watcher import BaseWatcher
+from BaseWatcher import BaseWatcher
 
 # Watchdog imports (optional, graceful fallback)
 try:

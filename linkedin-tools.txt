@@ -1,3 +1,43 @@
+## Problem :
+According to the @README.md file the silver tier hasbeen successfully implemented , but when reviewed it myself , I identified some issues missing things in this project which are as follows .
+
+- According to the @doc.md , hwen silver tier is implemented , the app is capable of posting on linkedin autonomously , when I run the mcp server and tried one tool to draft a post , it created 
+
+
+## Successfully tested functionalities :
+- Gmail MCP server (All tools running smoothly)
+- Gmail watcher .
+- File system watcher
+
+# Context :
+- Read @doc.md file for getting overview of the hackathon project .
+- Read @README.md for knowing about the project .
+--- 
+
+I've identified some problems in the current project . Help me to sort them out 
+
+## Context :
+- @doc.md (main hackathon documentation)
+- @README.md    project current status
+
+According to @README.md file the project hasbeen completed upto silver tier , while I've also tested some components of the project which are below .
+
+1. MCP server for sending emails .
+2. gmail_watcher script.
+3. file system watcher script .
+
+Missing guidance :
+- There is mentioned in @doc.md that there is a functionality implemented in the project to auto post on linkedin . There is no clear steps mentioned about how to this project is capable of posting on linkedin .
+
+- It's also mentioned in the hackathon documentation about qwen code reasoning loop that creates plan.md files in vault . 
+
+- It's also mentioned that the human is involved in all the sensitive operations in the project working like posting on linkedin and sending emails . 
+
+- More on this , it's also mentioned that in the application , task scheduler is implemented for scheduled tasks .
+
+and some more functionalities which are listed in the hackathon documentation  
+
+- I've tested the gmail mcp server and watcher manually , now I want to test other functionalities , Create a new readme file in the project root and in this file , write each and every 
 
 (digital-fte) G:\digital-fte>uv run python scripts/mcp-client.py list --url http://127.0.0.1:8802/mcp
 

@@ -25,12 +25,6 @@ dev = [
     "pytest-asyncio>=0.23.0",
 ]
 
-[project.scripts]
-digital-fte-orchestrator = "scripts.orchestrator:main"
-digital-fte-gmail-watcher = "scripts.gmail_watcher:main"
-digital-fte-filesystem-watcher = "scripts.filesystem_watcher:main"
-digital-fte-whatsapp-watcher = "scripts.whatsapp_watcher:main"
-
 [dependency-groups]
 dev = [
     "pytest>=8.0.0",

@@ -1,3 +1,6 @@
+
+--- 
+
 ## Problem :
 The authentication with gmail API is setup correctly in `gmail_watcher.py` , however , the mcp server lacks the authentication 
 The mcp server is not authenticating with correct scopes , resulting in insufficient permissions in gmail api .

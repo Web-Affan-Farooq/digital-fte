@@ -11,6 +11,11 @@
       "sourceType": "github",
       "computedHash": "41bea57fe458af47dfdf58e2eb3d994e61ad2b932fb01a7544bae4203e5e1e06"
     },
+    "mcp-chrome-devtools": {
+      "source": "smithery.ai",
+      "sourceType": "well-known",
+      "computedHash": "72368e2ee3e1f56aca745d93ca8a5bd24b5c9b4acc974505780fe1cf34b2490b"
+    },
     "python-development": {
       "source": "skillcreatorai/ai-agent-skills",
       "sourceType": "github",

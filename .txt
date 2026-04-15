@@ -1,16 +1,73 @@
+## Perequisites :
 
---- 
+Must check that following mcp servers are available or not 
+- chrome-devtools
+- playwright
 
-## Problem :
-The authentication with gmail API is setup correctly in `gmail_watcher.py` , however , the mcp server lacks the authentication 
-The mcp server is not authenticating with correct scopes , resulting in insufficient permissions in gmail api .
+You've to resolve a particular issue occured in the @WhatsappWatcher watcher , this watcher is used for monitoring the whatsapp using playwright , not whatsapp platform API because whatsapp platform api is very expensive . 
 
-## Task :
-Read the file @mcp-servers/email/server.py and make sure to correctly implement a fix so that this file will take and additional command line argument `--auth` dedicated to authenticating with correct scopes  
+The issue is that the script @WhatsappWatcher/main.py opens browser and navigate me to web.whatsapp.com where i log in with QR code , I clearly see the incoming unread messages in realtime in whatsapp web interface , but the playwright script , however doesnot see the required html elements and attributes , there fore it doesn't see unread messages , thus failing for whatsapp handling aspect 
 
-(digital-fte) G:\digital-fte>uv run python scripts/mcp-client.py list --url http://127.0.0.1:8801/mcp
+Use the mcp servers defined above for tasks such as working with browser and inspecting elements tree through chrome devtools . 
 
-Available tools from http://127.0.0.1:8801/mcp:
+Read files :
+- @doc.md  - (main hackathon project documentation , must read silver tier requirements)
+- @README.md - (project current status and details, currently working on silver tier)
+- @WhatsappWatcher  -  watcher for whatsapp handling and monitoring 
+- @.qwen/skills/whatsapp-monitoring  -  custom devveloped agent skill for monitoring whatsapp which uses same whatsapp watcher (when the whatsapp watcher is fixed , this should be updated)
+
+## Steps:
+- Open the chrome browser using playwright mcp server
+- Use the chrome-devtools mcp to identify elements for:
+  - Chat list panel
+  - Individual chat threads
+  - Unread message indicators
+  - Message bubbles (incoming vs outgoing)
+  - Message text content
+- Capture element selectors, classes, and attributes for:
+  - Unread message badge (unread count)
+  - Chat items with unread status
+  - Message containers
+  - Timestamp elements
+
+- Compare current selectors in `@WhatsappWatcher` with actual DOM structure
+- Document discrepancies:
+  - What the script currently looks for
+  - What actually exists in the DOM
+  - Any dynamic class names or attributes
+
+- Using Chrome DevTools, test each selector the script uses
+- Verify if they return the expected elements
+- Note any timing issues (elements not loaded immediately)
+- Check if shadow DOM is involved
+
+- Monitor DOM mutations when a new message arrives
+- Identify:
+  - What elements are added/modified
+  - What attributes change
+  - Any custom data attributes or React component markers
+  - Event listeners that could be leveraged
+
+- Based on inspection results, update selectors in `@WhatsappWatcher`
+- Focus on:
+  - Chat item selection for unread detection
+  - Message container selection
+  - Message content extraction
+- Ensure selectors are:
+  - Specific enough to avoid false positives
+  - Robust against WhatsApp UI updates
+  - Using data-testid attributes if available
+
+- Consider multiple detection methods:
+  1. **DOM MutationObserver**: Watch for new message elements
+  2. **Polling with improved selectors**: Regular checks with better selectors
+  3. **Attribute-based detection**: Look for `aria-label` or `data-*` attributes
+
+
+After that provide me a complete and consise file `fix-plan.md` which contains 
+- list of Issues leading to abnormal behaviour of watcher .
+- step by step implementation plan for each issue .
+
 
 ------------------------------------------------------------
 

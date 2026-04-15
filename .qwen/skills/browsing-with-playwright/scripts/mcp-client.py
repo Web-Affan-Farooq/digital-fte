@@ -10,7 +10,7 @@ Usage:
     python mcp-client.py list --url http://localhost:8080
 
     # List tools from a stdio MCP server
-    python mcp-client.py list --stdio "npx -y @modelcontextprotocol/server-github"
+    python mcp-client.py list --stdio "pnpm dlx -y @modelcontextprotocol/server-github"
 
     # Call a tool
     python mcp-client.py call --url http://localhost:8080 --tool create_issue \

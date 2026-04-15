@@ -19,7 +19,7 @@ Automate browser interactions via Playwright MCP server.
 bash scripts/start-server.sh
 
 # Or manually
-npx @playwright/mcp@latest --port 8808 --shared-browser-context &
+pnpm dlx @playwright/mcp@latest --port 8808 --shared-browser-context &
 ```
 
 ### Stop Server
